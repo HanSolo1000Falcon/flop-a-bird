@@ -1,27 +1,24 @@
 #ifndef fab_pipemanager
 #define fab_pipemanager
 
-#include <vector>
 #include <memory>
+#include <vector>
 
-#include "gamemanager.hpp"
 #include "pipe.hpp"
-#include "constants.hpp"
+#include "raylib.h"
 
 class PipeManager {
-  private:
-    const GameManager gameManager;
+private:
+  float pipeSpawnCooldown;
+  std::vector<std::unique_ptr<Pipe>> spawnedPipes;
 
-    float pipeSpawnCooldown;
-    std::vector<std::unique_ptr<Pipe>> spawnedPipes;
+public:
+  PipeManager() : pipeSpawnCooldown(0) {}
 
-  public:
-    PipeManager(GameManager gameManager) : gameManager(gameManager), pipeSpawnCooldown(constants::PIPE_SPAWN_COOLDOWN) { }
+  Pipe *GetNearestPipe(const Vector2 &birdPosition);
 
-    std::unique_ptr<Pipe> &GetNearestPipe(const Vector2 &birdPosition);
-
-    void Tick(const float &frameDelta);
-    void Render();
+  void Tick(const float &frameDelta);
+  void Render();
 };
 
 #endif

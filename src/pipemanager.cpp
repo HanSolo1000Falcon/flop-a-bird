@@ -1,21 +1,34 @@
-#include <iostream>
-#include <utility>
 #include <memory>
+#include <utility>
 
-#include "raylib.h"
-#include "pipemanager.hpp"
-#include "pipe.hpp"
 #include "constants.hpp"
+#include "pipe.hpp"
+#include "pipemanager.hpp"
+#include "raylib.h"
 
-std::unique_ptr<Pipe> &PipeManager::GetNearestPipe(const Vector2 &birdPosition) {
+Pipe *PipeManager::GetNearestPipe(const Vector2 &birdPosition) {
   const auto birdX = birdPosition.x;
+  float selectedPipeDiff = 9999;
+  Pipe *selectedPipe = nullptr;
 
   for (const auto &pipe : spawnedPipes) {
-    
+    const auto formatted =
+        -(pipe->GetTimeAlive() - constants::PIPE_LIFE_LENGTH);
+    const auto pipeX =
+        formatted * (constants::WINDOW_WIDTH / constants::PIPE_LIFE_LENGTH);
+    auto diff = pipeX - birdX;
+    if (diff < 0) {
+      diff = -diff;
+    }
+    if (diff < selectedPipeDiff) {
+      selectedPipeDiff = diff;
+      selectedPipe = pipe.get();
+    }
   }
+  return selectedPipe;
 }
 
-void PipeManager::Tick(const float& frameDelta) {
+void PipeManager::Tick(const float &frameDelta) {
   pipeSpawnCooldown -= frameDelta;
 
   if (pipeSpawnCooldown <= 0) {
@@ -29,8 +42,9 @@ void PipeManager::Tick(const float& frameDelta) {
     pipe->Tick(frameDelta);
   }
 
-  const auto widthtime = constants::PIPE_WIDTH / (constants::WINDOW_WIDTH / constants::PIPE_LIFE_LENGTH);
-  std::erase_if(spawnedPipes, [widthtime](const auto& pipe) {
+  const auto widthtime = constants::PIPE_WIDTH / (constants::WINDOW_WIDTH /
+                                                  constants::PIPE_LIFE_LENGTH);
+  std::erase_if(spawnedPipes, [widthtime](const auto &pipe) {
     return pipe->GetTimeAlive() > constants::PIPE_LIFE_LENGTH + widthtime;
   });
 }

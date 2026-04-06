@@ -2,16 +2,17 @@
 #define fab_constants
 
 namespace constants {
-  constexpr int WINDOW_WIDTH = 1000;
-  constexpr int WINDOW_HEIGHT = 800;
+constexpr int WINDOW_WIDTH = 1000;
+constexpr int WINDOW_HEIGHT = 800;
 
-  constexpr int GAP_SIZE = 150;
-  constexpr int PIPE_WIDTH = 100;
-  constexpr float PIPE_LIFE_LENGTH = 8;
-  constexpr float PIPE_SPAWN_COOLDOWN = 3;
+constexpr int GAP_SIZE = 150;
+constexpr int PIPE_WIDTH = 100;
+constexpr float PIPE_LIFE_LENGTH = 8;
+constexpr float PIPE_SPAWN_COOLDOWN = 3;
 
-  constexpr int GRAVITY_FORCE = 300;
-  constexpr int BIRD_JUMP_FORCE = 3000;
-}
+constexpr int GRAVITY_FORCE = 550;
+constexpr int BIRD_JUMP_FORCE = 250;
+constexpr int BIRD_SIZE = 50;
+} // namespace constants
 
 #endif

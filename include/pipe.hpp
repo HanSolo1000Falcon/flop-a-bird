@@ -2,16 +2,17 @@
 #define fab_pipe
 
 class Pipe {
-  private:
-    float timeAlive;
-    int gapPosition;
+private:
+  float timeAlive;
+  int gapPosition;
 
-  public:
-    float GetTimeAlive();
+public:
+  float GetTimeAlive() const;
+  int GetGapPosition() const;
 
-    void Tick(const float &frameDelta);
-    void Render();
-    void Awake();
+  void Tick(const float &frameDelta);
+  void Render();
+  void Awake();
 };
 
 #endif

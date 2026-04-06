@@ -1,21 +1,27 @@
 #ifndef fab_bird
 #define fab_bird
 
-#include <memory>
-
+#include "gamemanager.hpp"
+#include "pipe.hpp"
 #include "raylib.h"
 
 class Bird {
-  private:
-    Vector2 currentPosition;
-    Vector2 currentVelocity;
-    
-  public:
-    Vector2 GetPosition() { return currentPosition; }
+private:
+  Vector2 currentPosition;
+  Vector2 currentVelocity;
 
-    void Tick(const float &frameDelta, const std::unique_ptr<Pipe> &closestPipe);
-    void Render();
-    void Awake();
+  GameManager &gameManager;
+
+  bool overlappedX;
+
+public:
+  Bird(GameManager &gameManager) : gameManager(gameManager) {}
+
+  Vector2 GetPosition() const;
+
+  void Tick(const float &frameDelta, const Pipe &closestPipe);
+  void Render();
+  void Awake();
 };
 
 #endif

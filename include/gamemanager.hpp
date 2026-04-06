@@ -2,11 +2,17 @@
 #define fab_gamemanager
 
 class GameManager {
-  private:
-    int score;
+private:
+  int score;
+  bool dead;
 
-  public:
-    void InitLoop();
+public:
+  GameManager() : score(0), dead(false) {}
+
+  void IncrementScore();
+  void TriggerDeath();
+
+  void InitLoop();
 };
 
 #endif
