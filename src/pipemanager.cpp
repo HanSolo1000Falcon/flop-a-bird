@@ -7,6 +7,14 @@
 #include "pipe.hpp"
 #include "constants.hpp"
 
+std::unique_ptr<Pipe> &PipeManager::GetNearestPipe(const Vector2 &birdPosition) {
+  const auto birdX = birdPosition.x;
+
+  for (const auto &pipe : spawnedPipes) {
+    
+  }
+}
+
 void PipeManager::Tick(const float& frameDelta) {
   pipeSpawnCooldown -= frameDelta;
 

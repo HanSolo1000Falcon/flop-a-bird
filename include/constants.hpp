@@ -9,6 +9,9 @@ namespace constants {
   constexpr int PIPE_WIDTH = 100;
   constexpr float PIPE_LIFE_LENGTH = 8;
   constexpr float PIPE_SPAWN_COOLDOWN = 3;
+
+  constexpr int GRAVITY_FORCE = 300;
+  constexpr int BIRD_JUMP_FORCE = 3000;
 }
 
 #endif

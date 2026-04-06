@@ -18,6 +18,8 @@ class PipeManager {
   public:
     PipeManager(GameManager gameManager) : gameManager(gameManager), pipeSpawnCooldown(constants::PIPE_SPAWN_COOLDOWN) { }
 
+    std::unique_ptr<Pipe> &GetNearestPipe(const Vector2 &birdPosition);
+
     void Tick(const float &frameDelta);
     void Render();
 };

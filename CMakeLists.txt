@@ -6,6 +6,7 @@ find_package(raylib REQUIRED)
 
 add_executable(FlopABird src/main.cpp src/gamemanager.cpp
                          src/pipemanager.cpp src/pipe.cpp
+                         src/bird.cpp
                        )
 
 target_include_directories(FlopABird PRIVATE include)
