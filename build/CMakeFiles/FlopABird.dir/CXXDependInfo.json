@@ -1,0 +1,45 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/build",
+	"dir-cur-src" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird",
+	"dir-top-bld" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/build",
+	"dir-top-src" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/build/CMakeFiles/FlopABird.dir",
+	"sources" : 
+	{
+		"CMakeFiles/FlopABird.dir/src/gamemanager.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/src/gamemanager.cpp"
+		},
+		"CMakeFiles/FlopABird.dir/src/main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/src/main.cpp"
+		},
+		"CMakeFiles/FlopABird.dir/src/pipe.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/src/pipe.cpp"
+		},
+		"CMakeFiles/FlopABird.dir/src/pipemanager.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/falcon1k/Documents/Repositories/CPP/flop-a-bird/src/pipemanager.cpp"
+		}
+	}
+}
