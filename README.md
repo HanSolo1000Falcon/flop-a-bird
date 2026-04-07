@@ -2,7 +2,7 @@
 
 A remake of the classic _Flappy Bird_, written in C++ using [RayLib](https://www.raylib.com/) for graphics rendering.
 
-![Game Look Like](assets/alive.png)
+![Alive](assets/Alive.png)
 
 ![Dead](assets/Dead.png)
 
