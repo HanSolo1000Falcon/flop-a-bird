@@ -3,6 +3,7 @@
 
 #include "constants.hpp"
 #include "pipe.hpp"
+#include "pipeimage.h"
 #include "pipemanager.hpp"
 #include "raylib.h"
 
@@ -33,7 +34,7 @@ void PipeManager::Tick(const float &frameDelta) {
 
   if (pipeSpawnCooldown <= 0) {
     auto pipe = std::make_unique<Pipe>();
-    pipe->Awake();
+    pipe->Awake(pipeTexture);
     spawnedPipes.emplace_back(std::move(pipe));
     pipeSpawnCooldown = constants::PIPE_SPAWN_COOLDOWN;
   }
@@ -53,4 +54,11 @@ void PipeManager::Render() {
   for (const auto &pipe : spawnedPipes) {
     pipe->Render();
   }
+}
+
+void PipeManager::Awake() {
+  auto pipeImage =
+      LoadImageFromMemory(".png", FlappyBirdPipe_png, FlappyBirdPipe_png_len);
+  pipeTexture = LoadTextureFromImage(pipeImage);
+  UnloadImage(pipeImage);
 }

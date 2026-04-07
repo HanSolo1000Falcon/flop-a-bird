@@ -1,6 +1,7 @@
-#include <iostream>
+#include <algorithm>
 
 #include "bird.hpp"
+#include "birdimage.h"
 #include "constants.hpp"
 #include "raylib.h"
 
@@ -36,7 +37,7 @@ void Bird::Tick(const float &frameDelta, const Pipe &closestPipe) {
 
   currentVelocity.y += constants::GRAVITY_FORCE * frameDelta;
 
-  if (IsKeyDown(KEY_SPACE)) {
+  if (IsKeyPressed(KEY_SPACE)) {
     currentVelocity.y = -constants::BIRD_JUMP_FORCE;
   }
 
@@ -45,11 +46,22 @@ void Bird::Tick(const float &frameDelta, const Pipe &closestPipe) {
 }
 
 void Bird::Render() {
-  DrawRectangleV(currentPosition,
-                 Vector2(constants::BIRD_SIZE, constants::BIRD_SIZE), WHITE);
+  DrawTexturePro(
+      birbTexture,
+      (Rectangle){0, 0, (float)birbTexture.width, (float)birbTexture.height},
+      (Rectangle){currentPosition.x + constants::BIRD_SIZE / 2.0f,
+                  currentPosition.y + constants::BIRD_SIZE / 2.0f,
+                  constants::BIRD_SIZE, constants::BIRD_SIZE},
+      (Vector2){constants::BIRD_SIZE / 2.0f, constants::BIRD_SIZE / 2.0f},
+      std::clamp(currentVelocity.y / 4.0f, -90.0f, 90.0f), WHITE);
 }
 
 void Bird::Awake() {
   currentPosition = Vector2(20, 20);
   currentVelocity = Vector2(0, 0);
+
+  auto birbImage =
+      LoadImageFromMemory(".png", FlappyBird_png, FlappyBird_png_len);
+  birbTexture = LoadTextureFromImage(birbImage);
+  UnloadImage(birbImage);
 }

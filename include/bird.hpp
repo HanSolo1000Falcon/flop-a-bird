@@ -14,6 +14,8 @@ private:
 
   bool overlappedX;
 
+  Texture2D birbTexture;
+
 public:
   Bird(GameManager &gameManager) : gameManager(gameManager) {}
 

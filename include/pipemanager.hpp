@@ -12,6 +12,8 @@ private:
   float pipeSpawnCooldown;
   std::vector<std::unique_ptr<Pipe>> spawnedPipes;
 
+  Texture2D pipeTexture;
+
 public:
   PipeManager() : pipeSpawnCooldown(0) {}
 
@@ -19,6 +21,7 @@ public:
 
   void Tick(const float &frameDelta);
   void Render();
+  void Awake();
 };
 
 #endif

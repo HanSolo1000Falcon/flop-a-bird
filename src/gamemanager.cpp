@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 
+#include "backgroundimage.h"
 #include "bird.hpp"
 #include "constants.hpp"
 #include "gamemanager.hpp"
@@ -15,9 +16,14 @@ void GameManager::TriggerDeath() { dead = true; }
 void GameManager::InitLoop() {
   srand(time(0)); // Initializing the random stuff
 
+  const auto backgroundImage = LoadImageFromMemory(
+      ".png", FlappyBirdBackground_png, FlappyBirdBackground_png_len);
+  const auto backgroundTexture = LoadTextureFromImage(backgroundImage);
+
   const auto pipeManager = std::make_unique<PipeManager>();
   const auto bird = std::make_unique<Bird>(*this);
 
+  pipeManager->Awake();
   bird->Awake();
 
   while (!WindowShouldClose()) {
@@ -33,6 +39,14 @@ void GameManager::InitLoop() {
 
     BeginDrawing();
     ClearBackground(SKYBLUE);
+
+    DrawTexturePro(
+        backgroundTexture,
+        (Rectangle){0,
+                    (float)backgroundTexture.height - constants::WINDOW_HEIGHT,
+                    constants::WINDOW_WIDTH, constants::WINDOW_HEIGHT},
+        (Rectangle){0, 0, constants::WINDOW_WIDTH, constants::WINDOW_HEIGHT},
+        (Vector2){0, 0}, 0, WHITE);
 
     pipeManager->Render();
     bird->Render();
