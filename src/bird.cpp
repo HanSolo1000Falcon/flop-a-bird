@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "bird.hpp"
-#include "birdimage.h"
+#include "birdimage.hpp"
 #include "constants.hpp"
 #include "raylib.h"
 

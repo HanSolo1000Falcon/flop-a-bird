@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-#include "backgroundimage.h"
+#include "backgroundimage.hpp"
 #include "bird.hpp"
 #include "constants.hpp"
 #include "gamemanager.hpp"

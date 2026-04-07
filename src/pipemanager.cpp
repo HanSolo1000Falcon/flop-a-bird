@@ -1,9 +1,8 @@
 #include <memory>
-#include <utility>
 
 #include "constants.hpp"
 #include "pipe.hpp"
-#include "pipeimage.h"
+#include "pipeimage.hpp"
 #include "pipemanager.hpp"
 #include "raylib.h"
 
